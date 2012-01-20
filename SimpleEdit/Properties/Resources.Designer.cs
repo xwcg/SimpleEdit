@@ -67,6 +67,13 @@ namespace SimpleEdit.Properties {
             }
         }
         
+        internal static System.Drawing.Bitmap boldhs {
+            get {
+                object obj = ResourceManager.GetObject("boldhs", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
         internal static System.Drawing.Bitmap color {
             get {
                 object obj = ResourceManager.GetObject("color", resourceCulture);
@@ -84,6 +91,20 @@ namespace SimpleEdit.Properties {
         internal static System.Drawing.Bitmap Generic_Document2 {
             get {
                 object obj = ResourceManager.GetObject("Generic_Document2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap ItalicHS {
+            get {
+                object obj = ResourceManager.GetObject("ItalicHS", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap Link {
+            get {
+                object obj = ResourceManager.GetObject("Link", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

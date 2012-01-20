@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using Xware.xRegistry;
+using System.Reflection;
 
 namespace SimpleEdit
 {
@@ -17,27 +17,64 @@ namespace SimpleEdit
         public Main()
         {
             InitializeComponent();
-
             LoadSettings();
+
+            this.Text = this.Text + " - " + Assembly.GetCallingAssembly().GetName().Version.ToString();
         }
 
         private void LoadSettings()
         {
             if ( controllerRegistry.GetBool("WordWrap") == true )
             {
-                //menuOptionsWordWrap.Checked = true;
+                menuOptionsWordWrap.Checked = true;
                 textBoxRich.WordWrap = true;
                 textBoxSimple.WordWrap = true;
             }
             else
             {
-                //menuOptionsWordWrap.Checked = false;
+                menuOptionsWordWrap.Checked = false;
                 textBoxRich.WordWrap = false;
                 textBoxSimple.WordWrap = false;
+            }
+
+            for ( int i = 1; i <= 5; i++ )
+            {
+                AddRecentFile(controllerRegistry.GetString("RecentFile" + i.ToString()));
+            }
+        }
+
+        private void AddRecentFile( string path )
+        {
+            if ( path.Trim() != "" )
+            {
+                menuOpen.DropDownItems.Add(path);
             }
         }
 
         // Button declarations
+
+
+        private void menuSearchBar_Enter( object sender, EventArgs e )
+        {
+            menuSearchBar.Font = new Font(SystemFonts.MessageBoxFont, FontStyle.Regular);
+            menuSearchBar.ForeColor = SystemColors.WindowText;
+
+            if ( menuSearchBar.Text == "Search..." )
+            {
+                menuSearchBar.Text = "";
+            }
+        }
+
+        private void menuSearchBar_Leave( object sender, EventArgs e )
+        {
+            menuSearchBar.Font = new Font(SystemFonts.MessageBoxFont, FontStyle.Italic);
+            menuSearchBar.ForeColor = SystemColors.GrayText;
+
+            if ( menuSearchBar.Text.Trim() == "" )
+            {
+                menuSearchBar.Text = "Search...";
+            }
+        }   
 
         private void menuPrint_Click( object sender, EventArgs e )
         {
@@ -45,26 +82,23 @@ namespace SimpleEdit
             p.Show();
         }
 
-        //private void menuSearchBar_Enter( object sender, EventArgs e )
-        //{
-        //    menuSearchBar.Font = new Font(SystemFonts.MessageBoxFont, FontStyle.Regular);
-        //    menuSearchBar.ForeColor = SystemColors.WindowText;
+        private void menuOptionsWordWrap_Click( object sender, EventArgs e )
+        {
+            if ( controllerRegistry.GetBool("WordWrap") == true )
+            {
+                menuOptionsWordWrap.Checked = false;
+                textBoxRich.WordWrap = false;
+                textBoxSimple.WordWrap = false;
+                controllerRegistry.SetValue("WordWrap", false);
+            }
+            else
+            {
+                menuOptionsWordWrap.Checked = true;
+                textBoxRich.WordWrap = true;
+                textBoxSimple.WordWrap = true;
+                controllerRegistry.SetValue("WordWrap", true);
+            }
 
-        //    if ( menuSearchBar.Text == "Search..." )
-        //    {
-        //        menuSearchBar.Text = "";
-        //    }
-        //}
-
-        //private void menuSearchBar_Leave( object sender, EventArgs e )
-        //{
-        //    menuSearchBar.Font = new Font(SystemFonts.MessageBoxFont, FontStyle.Italic);
-        //    menuSearchBar.ForeColor = SystemColors.GrayText;
-
-        //    if ( menuSearchBar.Text.Trim() == "" )
-        //    {
-        //        menuSearchBar.Text = "Search...";
-        //    }
-        //}
+        }
     }
 }

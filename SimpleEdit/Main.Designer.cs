@@ -34,20 +34,40 @@
             this.textBoxRich = new System.Windows.Forms.RichTextBox();
             this.menuStrip = new System.Windows.Forms.ToolStrip();
             this.menuSearchBar = new System.Windows.Forms.ToolStripTextBox();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolBar = new System.Windows.Forms.ToolStrip();
+            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton4 = new System.Windows.Forms.ToolStripButton();
             this.menuNew = new System.Windows.Forms.ToolStripDropDownButton();
             this.menuNewText = new System.Windows.Forms.ToolStripMenuItem();
             this.menuNewRich = new System.Windows.Forms.ToolStripMenuItem();
             this.menuOpen = new System.Windows.Forms.ToolStripSplitButton();
             this.menuPrint = new System.Windows.Forms.ToolStripSplitButton();
             this.menuPrintSelection = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
+            this.menuSearch = new System.Windows.Forms.ToolStripButton();
             this.menuOptions = new System.Windows.Forms.ToolStripDropDownButton();
+            this.menuOptionsWordWrap = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuEdit = new System.Windows.Forms.ToolStripDropDownButton();
+            this.menuEditUndo = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.menuEditCut = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuEditCopy = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuEditPaste = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
+            this.menuEditSelectAll = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuEditExtras = new System.Windows.Forms.ToolStripMenuItem();
+            this.labelStatus = new System.Windows.Forms.ToolStripStatusLabel();
+            this.statusStrip.SuspendLayout();
             this.menuStrip.SuspendLayout();
+            this.toolBar.SuspendLayout();
             this.SuspendLayout();
             // 
             // statusStrip
             // 
             this.statusStrip.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.statusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.labelStatus});
             this.statusStrip.Location = new System.Drawing.Point(0, 480);
             this.statusStrip.Name = "statusStrip";
             this.statusStrip.RenderMode = System.Windows.Forms.ToolStripRenderMode.ManagerRenderMode;
@@ -89,9 +109,11 @@
             this.menuNew,
             this.menuOpen,
             this.menuPrint,
-            this.toolStripButton1,
+            this.menuSearch,
             this.menuSearchBar,
-            this.menuOptions});
+            this.menuOptions,
+            this.toolStripSeparator1,
+            this.menuEdit});
             this.menuStrip.Location = new System.Drawing.Point(0, 0);
             this.menuStrip.Name = "menuStrip";
             this.menuStrip.Size = new System.Drawing.Size(808, 25);
@@ -108,6 +130,54 @@
             this.menuSearchBar.Size = new System.Drawing.Size(100, 25);
             this.menuSearchBar.Text = "Search...";
             this.menuSearchBar.ToolTipText = "Enter search terms here";
+            this.menuSearchBar.Leave += new System.EventHandler(this.menuSearchBar_Leave);
+            this.menuSearchBar.Enter += new System.EventHandler(this.menuSearchBar_Enter);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
+            // 
+            // toolBar
+            // 
+            this.toolBar.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
+            this.toolBar.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripButton1,
+            this.toolStripButton2,
+            this.toolStripButton4});
+            this.toolBar.Location = new System.Drawing.Point(0, 25);
+            this.toolBar.Name = "toolBar";
+            this.toolBar.Size = new System.Drawing.Size(808, 25);
+            this.toolBar.TabIndex = 5;
+            this.toolBar.Text = "toolStrip1";
+            this.toolBar.Visible = false;
+            // 
+            // toolStripButton1
+            // 
+            this.toolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton1.Image = global::SimpleEdit.Properties.Resources.boldhs;
+            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton1.Name = "toolStripButton1";
+            this.toolStripButton1.Size = new System.Drawing.Size(23, 22);
+            this.toolStripButton1.Text = "toolStripButton1";
+            // 
+            // toolStripButton2
+            // 
+            this.toolStripButton2.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton2.Image = global::SimpleEdit.Properties.Resources.ItalicHS;
+            this.toolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton2.Name = "toolStripButton2";
+            this.toolStripButton2.Size = new System.Drawing.Size(23, 22);
+            this.toolStripButton2.Text = "toolStripButton2";
+            // 
+            // toolStripButton4
+            // 
+            this.toolStripButton4.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton4.Image = ( (System.Drawing.Image)( resources.GetObject("toolStripButton4.Image") ) );
+            this.toolStripButton4.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton4.Name = "toolStripButton4";
+            this.toolStripButton4.Size = new System.Drawing.Size(23, 22);
+            this.toolStripButton4.Text = "toolStripButton4";
             // 
             // menuNew
             // 
@@ -165,31 +235,116 @@
             this.menuPrintSelection.Text = "Print only &selected text";
             this.menuPrintSelection.ToolTipText = "Prints only your current seletion";
             // 
-            // toolStripButton1
+            // menuSearch
             // 
-            this.toolStripButton1.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.toolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton1.Image = global::SimpleEdit.Properties.Resources.ZoomHS;
-            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton1.Name = "toolStripButton1";
-            this.toolStripButton1.Size = new System.Drawing.Size(23, 22);
-            this.toolStripButton1.Text = "toolStripButton1";
+            this.menuSearch.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.menuSearch.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.menuSearch.Image = global::SimpleEdit.Properties.Resources.ZoomHS;
+            this.menuSearch.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.menuSearch.Name = "menuSearch";
+            this.menuSearch.Size = new System.Drawing.Size(23, 22);
+            this.menuSearch.ToolTipText = "Search";
             // 
             // menuOptions
             // 
             this.menuOptions.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
             this.menuOptions.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.menuOptions.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.menuOptionsWordWrap});
             this.menuOptions.Image = ( (System.Drawing.Image)( resources.GetObject("menuOptions.Image") ) );
             this.menuOptions.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.menuOptions.Name = "menuOptions";
             this.menuOptions.Size = new System.Drawing.Size(62, 22);
             this.menuOptions.Text = "&Options";
             // 
+            // menuOptionsWordWrap
+            // 
+            this.menuOptionsWordWrap.Name = "menuOptionsWordWrap";
+            this.menuOptionsWordWrap.Size = new System.Drawing.Size(134, 22);
+            this.menuOptionsWordWrap.Text = "Word Wrap";
+            this.menuOptionsWordWrap.Click += new System.EventHandler(this.menuOptionsWordWrap_Click);
+            // 
+            // menuEdit
+            // 
+            this.menuEdit.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.menuEdit.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.menuEditUndo,
+            this.toolStripSeparator2,
+            this.menuEditCut,
+            this.menuEditCopy,
+            this.menuEditPaste,
+            this.toolStripSeparator3,
+            this.menuEditSelectAll,
+            this.menuEditExtras});
+            this.menuEdit.Image = ( (System.Drawing.Image)( resources.GetObject("menuEdit.Image") ) );
+            this.menuEdit.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.menuEdit.Name = "menuEdit";
+            this.menuEdit.Size = new System.Drawing.Size(40, 22);
+            this.menuEdit.Text = "&Edit";
+            // 
+            // menuEditUndo
+            // 
+            this.menuEditUndo.Name = "menuEditUndo";
+            this.menuEditUndo.ShortcutKeys = ( (System.Windows.Forms.Keys)( ( System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Z ) ) );
+            this.menuEditUndo.Size = new System.Drawing.Size(164, 22);
+            this.menuEditUndo.Text = "&Undo";
+            // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(161, 6);
+            // 
+            // menuEditCut
+            // 
+            this.menuEditCut.Name = "menuEditCut";
+            this.menuEditCut.ShortcutKeys = ( (System.Windows.Forms.Keys)( ( System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.X ) ) );
+            this.menuEditCut.Size = new System.Drawing.Size(164, 22);
+            this.menuEditCut.Text = "C&ut";
+            // 
+            // menuEditCopy
+            // 
+            this.menuEditCopy.Name = "menuEditCopy";
+            this.menuEditCopy.ShortcutKeys = ( (System.Windows.Forms.Keys)( ( System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.C ) ) );
+            this.menuEditCopy.Size = new System.Drawing.Size(164, 22);
+            this.menuEditCopy.Text = "&Copy";
+            // 
+            // menuEditPaste
+            // 
+            this.menuEditPaste.Name = "menuEditPaste";
+            this.menuEditPaste.ShortcutKeys = ( (System.Windows.Forms.Keys)( ( System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.V ) ) );
+            this.menuEditPaste.Size = new System.Drawing.Size(164, 22);
+            this.menuEditPaste.Text = "&Paste";
+            // 
+            // toolStripSeparator3
+            // 
+            this.toolStripSeparator3.Name = "toolStripSeparator3";
+            this.toolStripSeparator3.Size = new System.Drawing.Size(161, 6);
+            // 
+            // menuEditSelectAll
+            // 
+            this.menuEditSelectAll.Name = "menuEditSelectAll";
+            this.menuEditSelectAll.ShortcutKeys = ( (System.Windows.Forms.Keys)( ( System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.A ) ) );
+            this.menuEditSelectAll.Size = new System.Drawing.Size(164, 22);
+            this.menuEditSelectAll.Text = "Select &All";
+            // 
+            // menuEditExtras
+            // 
+            this.menuEditExtras.Name = "menuEditExtras";
+            this.menuEditExtras.Size = new System.Drawing.Size(164, 22);
+            this.menuEditExtras.Text = "E&xtras...";
+            // 
+            // labelStatus
+            // 
+            this.labelStatus.Name = "labelStatus";
+            this.labelStatus.Size = new System.Drawing.Size(39, 17);
+            this.labelStatus.Text = "Status";
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(808, 502);
+            this.Controls.Add(this.toolBar);
             this.Controls.Add(this.textBoxSimple);
             this.Controls.Add(this.textBoxRich);
             this.Controls.Add(this.statusStrip);
@@ -198,8 +353,12 @@
             this.Name = "Main";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "SimpleEdit";
+            this.statusStrip.ResumeLayout(false);
+            this.statusStrip.PerformLayout();
             this.menuStrip.ResumeLayout(false);
             this.menuStrip.PerformLayout();
+            this.toolBar.ResumeLayout(false);
+            this.toolBar.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -217,9 +376,25 @@
         private System.Windows.Forms.ToolStripSplitButton menuOpen;
         private System.Windows.Forms.ToolStripSplitButton menuPrint;
         private System.Windows.Forms.ToolStripMenuItem menuPrintSelection;
-        private System.Windows.Forms.ToolStripButton toolStripButton1;
+        private System.Windows.Forms.ToolStripButton menuSearch;
         private System.Windows.Forms.ToolStripTextBox menuSearchBar;
         private System.Windows.Forms.ToolStripDropDownButton menuOptions;
+        private System.Windows.Forms.ToolStripMenuItem menuOptionsWordWrap;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.ToolStripDropDownButton menuEdit;
+        private System.Windows.Forms.ToolStripMenuItem menuEditUndo;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
+        private System.Windows.Forms.ToolStripMenuItem menuEditCut;
+        private System.Windows.Forms.ToolStripMenuItem menuEditCopy;
+        private System.Windows.Forms.ToolStripMenuItem menuEditPaste;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
+        private System.Windows.Forms.ToolStripMenuItem menuEditSelectAll;
+        private System.Windows.Forms.ToolStripMenuItem menuEditExtras;
+        private System.Windows.Forms.ToolStrip toolBar;
+        private System.Windows.Forms.ToolStripButton toolStripButton1;
+        private System.Windows.Forms.ToolStripButton toolStripButton2;
+        private System.Windows.Forms.ToolStripButton toolStripButton4;
+        private System.Windows.Forms.ToolStripStatusLabel labelStatus;
     }
 }
 
