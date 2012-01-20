@@ -1,0 +1,11 @@
+F:\Projects (VS08)\SimpleEdit\SimpleEdit\bin\Debug\SimpleEdit.exe
+F:\Projects (VS08)\SimpleEdit\SimpleEdit\bin\Debug\SimpleEdit.pdb
+F:\Projects (VS08)\SimpleEdit\SimpleEdit\obj\Debug\ResolveAssemblyReference.cache
+F:\Projects (VS08)\SimpleEdit\SimpleEdit\obj\Debug\SimpleEdit.Main.resources
+F:\Projects (VS08)\SimpleEdit\SimpleEdit\obj\Debug\SimpleEdit.Properties.Resources.resources
+F:\Projects (VS08)\SimpleEdit\SimpleEdit\obj\Debug\SimpleEdit.csproj.GenerateResource.Cache
+F:\Projects (VS08)\SimpleEdit\SimpleEdit\obj\Debug\SimpleEdit.exe
+F:\Projects (VS08)\SimpleEdit\SimpleEdit\obj\Debug\SimpleEdit.pdb
+F:\Projects (VS08)\SimpleEdit\SimpleEdit\bin\Debug\Xware.xRegistry.dll
+F:\Projects (VS08)\SimpleEdit\SimpleEdit\bin\Debug\Xware.xRegistry.pdb
+F:\Projects (VS08)\SimpleEdit\SimpleEdit\obj\Debug\SimpleEdit.PrintMenu.resources
