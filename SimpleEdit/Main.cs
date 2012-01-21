@@ -27,6 +27,8 @@ namespace SimpleEdit
             LoadPlugins();
 
             this.Text = AppName;
+
+            toolBar.Visible = false;
         }
 
         private void NewDocument()
@@ -76,6 +78,10 @@ namespace SimpleEdit
             ToolStripMenuItem i = new ToolStripMenuItem(p.PluginName);
             i.DisplayStyle = ToolStripItemDisplayStyle.Text;
             i.Click += new EventHandler(i_Click);
+            i.ToolTipText = p.Description + "\n\n" +
+                "Author: " + p.Author + "\n" +
+                "Version: " + p.Version + "\n" +
+                "Website: " + p.Website + "\n";
 
             menuEditExtras.DropDownItems.Add(i);
         }
@@ -93,7 +99,7 @@ namespace SimpleEdit
             {
                 textBoxSimple.SelectedText = p.Do(textBoxSimple.SelectedText);
             }
-        } 
+        }
 
         private void LoadSettings()
         {
