@@ -39,6 +39,16 @@
             this.toolBold = new System.Windows.Forms.ToolStripButton();
             this.toolItalic = new System.Windows.Forms.ToolStripButton();
             this.toolUnderline = new System.Windows.Forms.ToolStripButton();
+            this.labelStatus = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStrike = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolFontList = new System.Windows.Forms.ToolStripComboBox();
+            this.toolFontSize = new System.Windows.Forms.ToolStripComboBox();
+            this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
             this.menuNew = new System.Windows.Forms.ToolStripDropDownButton();
             this.menuNewText = new System.Windows.Forms.ToolStripMenuItem();
             this.menuNewRich = new System.Windows.Forms.ToolStripMenuItem();
@@ -57,11 +67,6 @@
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.menuEditSelectAll = new System.Windows.Forms.ToolStripMenuItem();
             this.menuEditExtras = new System.Windows.Forms.ToolStripMenuItem();
-            this.labelStatus = new System.Windows.Forms.ToolStripStatusLabel();
-            this.toolStrike = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripComboBox1 = new System.Windows.Forms.ToolStripComboBox();
-            this.toolStripComboBox2 = new System.Windows.Forms.ToolStripComboBox();
             this.statusStrip.SuspendLayout();
             this.menuStrip.SuspendLayout();
             this.toolBar.SuspendLayout();
@@ -84,13 +89,13 @@
             this.textBoxSimple.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBoxSimple.Dock = System.Windows.Forms.DockStyle.Fill;
             this.textBoxSimple.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ( (byte)( 0 ) ));
-            this.textBoxSimple.Location = new System.Drawing.Point(0, 50);
+            this.textBoxSimple.Location = new System.Drawing.Point(0, 53);
             this.textBoxSimple.Margin = new System.Windows.Forms.Padding(10);
             this.textBoxSimple.MaxLength = 2147483647;
             this.textBoxSimple.Multiline = true;
             this.textBoxSimple.Name = "textBoxSimple";
             this.textBoxSimple.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.textBoxSimple.Size = new System.Drawing.Size(808, 430);
+            this.textBoxSimple.Size = new System.Drawing.Size(808, 427);
             this.textBoxSimple.TabIndex = 2;
             // 
             // textBoxRich
@@ -98,12 +103,13 @@
             this.textBoxRich.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBoxRich.Dock = System.Windows.Forms.DockStyle.Fill;
             this.textBoxRich.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ( (byte)( 0 ) ));
-            this.textBoxRich.Location = new System.Drawing.Point(0, 50);
+            this.textBoxRich.Location = new System.Drawing.Point(0, 53);
             this.textBoxRich.Name = "textBoxRich";
-            this.textBoxRich.Size = new System.Drawing.Size(808, 430);
+            this.textBoxRich.Size = new System.Drawing.Size(808, 427);
             this.textBoxRich.TabIndex = 3;
             this.textBoxRich.Text = "";
             this.textBoxRich.Visible = false;
+            this.textBoxRich.SelectionChanged += new System.EventHandler(this.textBoxRich_SelectionChanged);
             // 
             // menuStrip
             // 
@@ -150,42 +156,149 @@
             this.toolItalic,
             this.toolUnderline,
             this.toolStrike,
+            this.toolStripSeparator6,
+            this.toolStripButton1,
+            this.toolStripButton2,
+            this.toolStripButton3,
             this.toolStripSeparator4,
-            this.toolStripComboBox1,
-            this.toolStripComboBox2});
+            this.toolFontList,
+            this.toolFontSize,
+            this.toolStripSeparator5});
             this.toolBar.Location = new System.Drawing.Point(0, 25);
             this.toolBar.Name = "toolBar";
-            this.toolBar.Size = new System.Drawing.Size(808, 25);
+            this.toolBar.Padding = new System.Windows.Forms.Padding(10, 0, 1, 0);
+            this.toolBar.Size = new System.Drawing.Size(808, 28);
             this.toolBar.TabIndex = 5;
             this.toolBar.Text = "Formatting Tool Bar";
             // 
             // toolBold
             // 
+            this.toolBold.CheckOnClick = true;
             this.toolBold.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
             this.toolBold.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             this.toolBold.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolBold.Name = "toolBold";
-            this.toolBold.Size = new System.Drawing.Size(23, 22);
+            this.toolBold.Padding = new System.Windows.Forms.Padding(3);
+            this.toolBold.Size = new System.Drawing.Size(25, 25);
             this.toolBold.Text = "B";
+            this.toolBold.ToolTipText = "Bold (Thick letters)";
             this.toolBold.Click += new System.EventHandler(this.toolBold_Click);
             // 
             // toolItalic
             // 
+            this.toolItalic.CheckOnClick = true;
             this.toolItalic.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
             this.toolItalic.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Italic);
             this.toolItalic.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolItalic.Name = "toolItalic";
-            this.toolItalic.Size = new System.Drawing.Size(23, 22);
+            this.toolItalic.Padding = new System.Windows.Forms.Padding(3);
+            this.toolItalic.Size = new System.Drawing.Size(23, 25);
             this.toolItalic.Text = "I";
+            this.toolItalic.ToolTipText = "Italics (Slanted letters)";
+            this.toolItalic.Click += new System.EventHandler(this.toolItalic_Click);
             // 
             // toolUnderline
             // 
+            this.toolUnderline.CheckOnClick = true;
             this.toolUnderline.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
             this.toolUnderline.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Underline);
             this.toolUnderline.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolUnderline.Name = "toolUnderline";
-            this.toolUnderline.Size = new System.Drawing.Size(23, 22);
+            this.toolUnderline.Padding = new System.Windows.Forms.Padding(3);
+            this.toolUnderline.Size = new System.Drawing.Size(25, 25);
             this.toolUnderline.Text = "U";
+            this.toolUnderline.ToolTipText = "Underlined (Line under letters)";
+            this.toolUnderline.Click += new System.EventHandler(this.toolUnderline_Click);
+            // 
+            // labelStatus
+            // 
+            this.labelStatus.Name = "labelStatus";
+            this.labelStatus.Size = new System.Drawing.Size(39, 17);
+            this.labelStatus.Text = "Status";
+            // 
+            // toolStrike
+            // 
+            this.toolStrike.CheckOnClick = true;
+            this.toolStrike.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.toolStrike.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Strikeout);
+            this.toolStrike.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStrike.Name = "toolStrike";
+            this.toolStrike.Padding = new System.Windows.Forms.Padding(3);
+            this.toolStrike.Size = new System.Drawing.Size(23, 25);
+            this.toolStrike.Text = "S";
+            this.toolStrike.ToolTipText = "Striked (Line through letters)";
+            this.toolStrike.Click += new System.EventHandler(this.toolStrike_Click);
+            // 
+            // toolStripSeparator4
+            // 
+            this.toolStripSeparator4.Name = "toolStripSeparator4";
+            this.toolStripSeparator4.Size = new System.Drawing.Size(6, 28);
+            // 
+            // toolFontList
+            // 
+            this.toolFontList.Name = "toolFontList";
+            this.toolFontList.Size = new System.Drawing.Size(121, 28);
+            this.toolFontList.SelectedIndexChanged += new System.EventHandler(this.toolFontList_SelectedIndexChanged);
+            // 
+            // toolFontSize
+            // 
+            this.toolFontSize.AutoSize = false;
+            this.toolFontSize.DropDownWidth = 50;
+            this.toolFontSize.Items.AddRange(new object[] {
+            "64",
+            "32",
+            "24",
+            "22",
+            "20",
+            "18",
+            "16",
+            "12",
+            "9",
+            "8",
+            "6",
+            "4",
+            "3",
+            "2"});
+            this.toolFontSize.Name = "toolFontSize";
+            this.toolFontSize.Size = new System.Drawing.Size(50, 25);
+            this.toolFontSize.SelectedIndexChanged += new System.EventHandler(this.toolFontSize_SelectedIndexChanged);
+            // 
+            // toolStripSeparator5
+            // 
+            this.toolStripSeparator5.Name = "toolStripSeparator5";
+            this.toolStripSeparator5.Size = new System.Drawing.Size(6, 28);
+            // 
+            // toolStripSeparator6
+            // 
+            this.toolStripSeparator6.Name = "toolStripSeparator6";
+            this.toolStripSeparator6.Size = new System.Drawing.Size(6, 28);
+            // 
+            // toolStripButton1
+            // 
+            this.toolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton1.Image = global::SimpleEdit.Properties.Resources.AlignTableCellMiddleLeftJustHS;
+            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton1.Name = "toolStripButton1";
+            this.toolStripButton1.Size = new System.Drawing.Size(23, 25);
+            this.toolStripButton1.Text = "toolStripButton1";
+            // 
+            // toolStripButton2
+            // 
+            this.toolStripButton2.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton2.Image = global::SimpleEdit.Properties.Resources.AlignTableCellMiddleCenterHS;
+            this.toolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton2.Name = "toolStripButton2";
+            this.toolStripButton2.Size = new System.Drawing.Size(23, 25);
+            this.toolStripButton2.Text = "toolStripButton2";
+            // 
+            // toolStripButton3
+            // 
+            this.toolStripButton3.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton3.Image = global::SimpleEdit.Properties.Resources.AlignTableCellMiddleRightHS;
+            this.toolStripButton3.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton3.Name = "toolStripButton3";
+            this.toolStripButton3.Size = new System.Drawing.Size(23, 25);
+            this.toolStripButton3.Text = "toolStripButton3";
             // 
             // menuNew
             // 
@@ -203,7 +316,7 @@
             // menuNewText
             // 
             this.menuNewText.Name = "menuNewText";
-            this.menuNewText.Size = new System.Drawing.Size(152, 22);
+            this.menuNewText.Size = new System.Drawing.Size(143, 22);
             this.menuNewText.Text = "&Text File";
             this.menuNewText.ToolTipText = "A text document with no text formatting. Like a .txt file.";
             this.menuNewText.Click += new System.EventHandler(this.menuNewText_Click);
@@ -211,7 +324,7 @@
             // menuNewRich
             // 
             this.menuNewRich.Name = "menuNewRich";
-            this.menuNewRich.Size = new System.Drawing.Size(152, 22);
+            this.menuNewRich.Size = new System.Drawing.Size(143, 22);
             this.menuNewRich.Text = "&Rich Text File";
             this.menuNewRich.ToolTipText = "A rich text file with formatting. Like a word document.";
             this.menuNewRich.Click += new System.EventHandler(this.menuNewRich_Click);
@@ -343,53 +456,6 @@
             this.menuEditExtras.Size = new System.Drawing.Size(164, 22);
             this.menuEditExtras.Text = "E&xtras...";
             // 
-            // labelStatus
-            // 
-            this.labelStatus.Name = "labelStatus";
-            this.labelStatus.Size = new System.Drawing.Size(39, 17);
-            this.labelStatus.Text = "Status";
-            // 
-            // toolStrike
-            // 
-            this.toolStrike.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.toolStrike.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Strikeout);
-            this.toolStrike.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStrike.Name = "toolStrike";
-            this.toolStrike.Size = new System.Drawing.Size(23, 22);
-            this.toolStrike.Text = "S";
-            // 
-            // toolStripSeparator4
-            // 
-            this.toolStripSeparator4.Name = "toolStripSeparator4";
-            this.toolStripSeparator4.Size = new System.Drawing.Size(6, 25);
-            // 
-            // toolStripComboBox1
-            // 
-            this.toolStripComboBox1.Name = "toolStripComboBox1";
-            this.toolStripComboBox1.Size = new System.Drawing.Size(121, 25);
-            // 
-            // toolStripComboBox2
-            // 
-            this.toolStripComboBox2.AutoSize = false;
-            this.toolStripComboBox2.DropDownWidth = 50;
-            this.toolStripComboBox2.Items.AddRange(new object[] {
-            "64",
-            "32",
-            "24",
-            "22",
-            "20",
-            "18",
-            "16",
-            "12",
-            "9",
-            "8",
-            "6",
-            "4",
-            "3",
-            "2"});
-            this.toolStripComboBox2.Name = "toolStripComboBox2";
-            this.toolStripComboBox2.Size = new System.Drawing.Size(50, 25);
-            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -448,8 +514,13 @@
         private System.Windows.Forms.ToolStripStatusLabel labelStatus;
         private System.Windows.Forms.ToolStripButton toolStrike;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
-        private System.Windows.Forms.ToolStripComboBox toolStripComboBox1;
-        private System.Windows.Forms.ToolStripComboBox toolStripComboBox2;
+        private System.Windows.Forms.ToolStripComboBox toolFontList;
+        private System.Windows.Forms.ToolStripComboBox toolFontSize;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator6;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
+        private System.Windows.Forms.ToolStripButton toolStripButton1;
+        private System.Windows.Forms.ToolStripButton toolStripButton2;
+        private System.Windows.Forms.ToolStripButton toolStripButton3;
     }
 }
 

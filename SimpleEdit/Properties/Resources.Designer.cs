@@ -60,6 +60,27 @@ namespace SimpleEdit.Properties {
             }
         }
         
+        internal static System.Drawing.Bitmap AlignTableCellMiddleCenterHS {
+            get {
+                object obj = ResourceManager.GetObject("AlignTableCellMiddleCenterHS", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap AlignTableCellMiddleLeftJustHS {
+            get {
+                object obj = ResourceManager.GetObject("AlignTableCellMiddleLeftJustHS", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap AlignTableCellMiddleRightHS {
+            get {
+                object obj = ResourceManager.GetObject("AlignTableCellMiddleRightHS", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
         internal static System.Drawing.Bitmap bnw {
             get {
                 object obj = ResourceManager.GetObject("bnw", resourceCulture);

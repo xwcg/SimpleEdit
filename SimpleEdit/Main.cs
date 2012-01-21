@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Text;
+using System.Reflection;
 using System.Text;
 using System.Windows.Forms;
-using Xware.xRegistry;
-using System.Reflection;
-using SimpleEditPluginInterface;
 using SimpleEditExtraHandler;
+using SimpleEditPluginInterface;
+using Xware.xRegistry;
 
 namespace SimpleEdit
 {
@@ -103,6 +104,15 @@ namespace SimpleEdit
 
         private void LoadSettings()
         {
+            FontFamily[] fontFamilies;
+            InstalledFontCollection installedFontCollection = new InstalledFontCollection();
+            fontFamilies = installedFontCollection.Families;
+
+            foreach ( FontFamily b in fontFamilies )
+            {
+                toolFontList.Items.Add(b.Name);
+            }
+
             if ( controllerRegistry.GetBool("WordWrap") == true )
             {
                 menuOptionsWordWrap.Checked = true;
@@ -192,13 +202,66 @@ namespace SimpleEdit
 
         private void toolBold_Click( object sender, EventArgs e )
         {
-            if ( textBoxRich.SelectionFont.Bold )
+            textBoxRich.SelectionFont = new Font(textBoxRich.SelectionFont, textBoxRich.SelectionFont.Style ^ FontStyle.Bold);
+        }
+
+        private void toolItalic_Click( object sender, EventArgs e )
+        {
+            textBoxRich.SelectionFont = new Font(textBoxRich.SelectionFont, textBoxRich.SelectionFont.Style ^ FontStyle.Italic);
+        }
+
+        private void toolUnderline_Click( object sender, EventArgs e )
+        {
+            textBoxRich.SelectionFont = new Font(textBoxRich.SelectionFont, textBoxRich.SelectionFont.Style ^ FontStyle.Underline);
+        }
+
+        private void toolStrike_Click( object sender, EventArgs e )
+        {
+            textBoxRich.SelectionFont = new Font(textBoxRich.SelectionFont, textBoxRich.SelectionFont.Style ^ FontStyle.Strikeout);
+        }
+
+        private void textBoxRich_SelectionChanged( object sender, EventArgs e )
+        {
+            try
             {
-                textBoxRich.SelectionFont = new Font(textBoxRich.SelectionFont, FontStyle.Regular);
+                toolBold.Checked = textBoxRich.SelectionFont.Bold;
+                toolItalic.Checked = textBoxRich.SelectionFont.Italic;
+                toolUnderline.Checked = textBoxRich.SelectionFont.Underline;
+                toolStrike.Checked = textBoxRich.SelectionFont.Strikeout;
+                toolFontList.SelectedIndex = toolFontList.Items.IndexOf(textBoxRich.SelectionFont.Name);
+                toolFontSize.Text = textBoxRich.SelectionFont.SizeInPoints.ToString();
             }
-            else
+            catch
             {
-                textBoxRich.SelectionFont = new Font(textBoxRich.SelectionFont, FontStyle.Bold);
+                toolBold.Checked = false;
+                toolItalic.Checked = false;
+                toolUnderline.Checked = false;
+                toolStrike.Checked = false;
+                toolFontList.Text = "";                ;
+                toolFontSize.Text = "";
+            }
+        }
+
+        private void toolFontList_SelectedIndexChanged( object sender, EventArgs e )
+        {
+            try
+            {
+                textBoxRich.SelectionFont = new Font(toolFontList.Text, textBoxRich.SelectionFont.Size, textBoxRich.SelectionFont.Style, textBoxRich.SelectionFont.Unit);
+            }
+            catch
+            {
+            }
+        }
+
+        private void toolFontSize_SelectedIndexChanged( object sender, EventArgs e )
+        {
+            try
+            {
+                float f = Convert.ToSingle(toolFontSize.Text);
+                textBoxRich.SelectionFont = new Font(textBoxRich.SelectionFont.Name, f, textBoxRich.SelectionFont.Style, GraphicsUnit.Point);
+            }
+            catch
+            {
             }
         }
 

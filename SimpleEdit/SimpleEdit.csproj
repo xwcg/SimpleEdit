@@ -128,6 +128,9 @@
     <None Include="Resources\boldhs.png" />
     <None Include="Resources\ItalicHS.png" />
     <None Include="Resources\Link.png" />
+    <None Include="Resources\AlignTableCellMiddleLeftJustHS.PNG" />
+    <None Include="Resources\AlignTableCellMiddleCenterHS.png" />
+    <None Include="Resources\AlignTableCellMiddleRightHS.png" />
     <Content Include="selogo.ico" />
   </ItemGroup>
   <ItemGroup>
