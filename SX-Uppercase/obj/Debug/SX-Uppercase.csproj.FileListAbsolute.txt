@@ -1,0 +1,11 @@
+F:\Projects (VS08)\SimpleEdit\SX-Uppercase\obj\Debug\ResolveAssemblyReference.cache
+F:\Projects (VS08)\SimpleEdit\SX-Uppercase\bin\Debug\SX-Uppercase.dll
+F:\Projects (VS08)\SimpleEdit\SX-Uppercase\bin\Debug\SX-Uppercase.pdb
+F:\Projects (VS08)\SimpleEdit\SX-Uppercase\bin\Debug\SimpleEditExtraHandler.dll
+F:\Projects (VS08)\SimpleEdit\SX-Uppercase\bin\Debug\SimpleEditPluginInterface.dll
+F:\Projects (VS08)\SimpleEdit\SX-Uppercase\bin\Debug\SimpleEditExtraHandler.pdb
+F:\Projects (VS08)\SimpleEdit\SX-Uppercase\bin\Debug\SimpleEditPluginInterface.pdb
+F:\Projects (VS08)\SimpleEdit\SX-Uppercase\obj\Debug\SX-Uppercase.dll
+F:\Projects (VS08)\SimpleEdit\SX-Uppercase\obj\Debug\SX-Uppercase.pdb
+F:\Projects (VS08)\SimpleEdit\SimpleEdit\bin\Debug\plugins\extras\SX-Uppercase.dll
+F:\Projects (VS08)\SimpleEdit\SimpleEdit\bin\Debug\plugins\extras\SX-Uppercase.pdb

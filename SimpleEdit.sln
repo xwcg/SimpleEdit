@@ -7,6 +7,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleEditPluginInterface",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleEditFileHandler", "SimpleEditFileHandler\SimpleEditFileHandler.csproj", "{292780C7-5CC2-42FD-8506-DB639B18A8F1}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleEditExtraHandler", "SimpleEditExtraHandler\SimpleEditExtraHandler.csproj", "{7B05E590-F17D-45E3-8BF1-AB7487F9F7C7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SX-Uppercase", "SX-Uppercase\SX-Uppercase.csproj", "{BD34E67F-CBC4-4801-895E-999EB1D50435}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -25,6 +29,14 @@ Global
 		{292780C7-5CC2-42FD-8506-DB639B18A8F1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{292780C7-5CC2-42FD-8506-DB639B18A8F1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{292780C7-5CC2-42FD-8506-DB639B18A8F1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7B05E590-F17D-45E3-8BF1-AB7487F9F7C7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7B05E590-F17D-45E3-8BF1-AB7487F9F7C7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7B05E590-F17D-45E3-8BF1-AB7487F9F7C7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7B05E590-F17D-45E3-8BF1-AB7487F9F7C7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BD34E67F-CBC4-4801-895E-999EB1D50435}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BD34E67F-CBC4-4801-895E-999EB1D50435}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BD34E67F-CBC4-4801-895E-999EB1D50435}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BD34E67F-CBC4-4801-895E-999EB1D50435}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

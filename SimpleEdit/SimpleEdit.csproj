@@ -59,12 +59,14 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Global.cs" />
     <Compile Include="Main.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Main.Designer.cs">
       <DependentUpon>Main.cs</DependentUpon>
     </Compile>
+    <Compile Include="PluginService.cs" />
     <Compile Include="PrintMenu.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -146,6 +148,14 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\SimpleEditExtraHandler\SimpleEditExtraHandler.csproj">
+      <Project>{7B05E590-F17D-45E3-8BF1-AB7487F9F7C7}</Project>
+      <Name>SimpleEditExtraHandler</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SimpleEditFileHandler\SimpleEditFileHandler.csproj">
+      <Project>{292780C7-5CC2-42FD-8506-DB639B18A8F1}</Project>
+      <Name>SimpleEditFileHandler</Name>
+    </ProjectReference>
     <ProjectReference Include="..\SimpleEditPluginInterface\SimpleEditPluginInterface.csproj">
       <Project>{5F13E0ED-4379-4055-A0C4-7019CDF5645E}</Project>
       <Name>SimpleEditPluginInterface</Name>

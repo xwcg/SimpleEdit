@@ -7,6 +7,8 @@ using System.Text;
 using System.Windows.Forms;
 using Xware.xRegistry;
 using System.Reflection;
+using SimpleEditPluginInterface;
+using SimpleEditExtraHandler;
 
 namespace SimpleEdit
 {
@@ -22,6 +24,7 @@ namespace SimpleEdit
         {
             InitializeComponent();
             LoadSettings();
+            LoadPlugins();
 
             this.Text = AppName;
         }
@@ -54,6 +57,43 @@ namespace SimpleEdit
                 toolBar.Visible = false;
             }
         }
+
+        private void LoadPlugins()
+        {
+            Global.Plugins.FindPlugins(Environment.CurrentDirectory + "\\plugins\\extras\\");
+
+            foreach ( AvailablePlugin p in Global.Plugins.AvailablePlugins )
+            {
+                if ( p.Instance is SimpleEditExtraHandler.SEExtra )
+                {
+                    AddExtra((SimpleEditExtraHandler.SEExtra)p.Instance);
+                }
+            }
+        }
+
+        private void AddExtra( SimpleEditExtraHandler.SEExtra p )
+        {
+            ToolStripMenuItem i = new ToolStripMenuItem(p.PluginName);
+            i.DisplayStyle = ToolStripItemDisplayStyle.Text;
+            i.Click += new EventHandler(i_Click);
+
+            menuEditExtras.DropDownItems.Add(i);
+        }
+
+        void i_Click( object sender, EventArgs e )
+        {
+            ToolStripMenuItem i = (ToolStripMenuItem)sender;
+            SEExtra p = (SEExtra)Global.Plugins.AvailablePlugins.Find(i.Text).Instance;
+
+            if ( richDocument )
+            {
+                textBoxRich.SelectedText = p.Do(textBoxRich.SelectedText);
+            }
+            else
+            {
+                textBoxSimple.SelectedText = p.Do(textBoxSimple.SelectedText);
+            }
+        } 
 
         private void LoadSettings()
         {

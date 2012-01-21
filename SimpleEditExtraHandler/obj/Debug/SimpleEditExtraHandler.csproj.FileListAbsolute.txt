@@ -1,0 +1,7 @@
+F:\Projects (VS08)\SimpleEdit\SimpleEditExtraHandler\bin\Debug\SimpleEditExtraHandler.dll
+F:\Projects (VS08)\SimpleEdit\SimpleEditExtraHandler\bin\Debug\SimpleEditExtraHandler.pdb
+F:\Projects (VS08)\SimpleEdit\SimpleEditExtraHandler\bin\Debug\SimpleEditPluginInterface.dll
+F:\Projects (VS08)\SimpleEdit\SimpleEditExtraHandler\bin\Debug\SimpleEditPluginInterface.pdb
+F:\Projects (VS08)\SimpleEdit\SimpleEditExtraHandler\obj\Debug\ResolveAssemblyReference.cache
+F:\Projects (VS08)\SimpleEdit\SimpleEditExtraHandler\obj\Debug\SimpleEditExtraHandler.dll
+F:\Projects (VS08)\SimpleEdit\SimpleEditExtraHandler\obj\Debug\SimpleEditExtraHandler.pdb
