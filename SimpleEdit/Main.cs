@@ -14,12 +14,45 @@ namespace SimpleEdit
     {
         public xRegistry controllerRegistry = new xRegistry("SimpleEdit");
 
+        bool richDocument = false;
+
+        string AppName = "SimpleEdit - " + Assembly.GetCallingAssembly().GetName().Version.ToString();
+
         public Main()
         {
             InitializeComponent();
             LoadSettings();
 
-            this.Text = this.Text + " - " + Assembly.GetCallingAssembly().GetName().Version.ToString();
+            this.Text = AppName;
+        }
+
+        private void NewDocument()
+        {
+            NewDocument(richDocument);
+        }
+
+        private void NewDocument( bool rich )
+        {
+            richDocument = rich;
+
+            textBoxSimple.Text = "";
+            textBoxRich.Rtf = "";
+            textBoxRich.Text = "";
+
+            if ( rich )
+            {
+                this.Text = "Untitled Rich Document - " + AppName;
+                textBoxRich.Visible = true;
+                textBoxSimple.Visible = false;
+                toolBar.Visible = true;
+            }
+            else
+            {
+                this.Text = "Untitled Text Document - " + AppName;
+                textBoxRich.Visible = false;
+                textBoxSimple.Visible = true;
+                toolBar.Visible = false;
+            }
         }
 
         private void LoadSettings()
@@ -74,7 +107,7 @@ namespace SimpleEdit
             {
                 menuSearchBar.Text = "Search...";
             }
-        }   
+        }
 
         private void menuPrint_Click( object sender, EventArgs e )
         {
@@ -100,5 +133,29 @@ namespace SimpleEdit
             }
 
         }
+
+        private void menuNewText_Click( object sender, EventArgs e )
+        {
+            NewDocument(false);
+        }
+
+        private void menuNewRich_Click( object sender, EventArgs e )
+        {
+            NewDocument(true);
+        }
+
+        private void toolBold_Click( object sender, EventArgs e )
+        {
+            if ( textBoxRich.SelectionFont.Bold )
+            {
+                textBoxRich.SelectionFont = new Font(textBoxRich.SelectionFont, FontStyle.Regular);
+            }
+            else
+            {
+                textBoxRich.SelectionFont = new Font(textBoxRich.SelectionFont, FontStyle.Bold);
+            }
+        }
+
+
     }
 }

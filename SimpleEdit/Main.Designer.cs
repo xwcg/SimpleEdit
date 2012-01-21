@@ -36,9 +36,9 @@
             this.menuSearchBar = new System.Windows.Forms.ToolStripTextBox();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.toolBar = new System.Windows.Forms.ToolStrip();
-            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton4 = new System.Windows.Forms.ToolStripButton();
+            this.toolBold = new System.Windows.Forms.ToolStripButton();
+            this.toolItalic = new System.Windows.Forms.ToolStripButton();
+            this.toolUnderline = new System.Windows.Forms.ToolStripButton();
             this.menuNew = new System.Windows.Forms.ToolStripDropDownButton();
             this.menuNewText = new System.Windows.Forms.ToolStripMenuItem();
             this.menuNewRich = new System.Windows.Forms.ToolStripMenuItem();
@@ -58,6 +58,10 @@
             this.menuEditSelectAll = new System.Windows.Forms.ToolStripMenuItem();
             this.menuEditExtras = new System.Windows.Forms.ToolStripMenuItem();
             this.labelStatus = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStrike = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripComboBox1 = new System.Windows.Forms.ToolStripComboBox();
+            this.toolStripComboBox2 = new System.Windows.Forms.ToolStripComboBox();
             this.statusStrip.SuspendLayout();
             this.menuStrip.SuspendLayout();
             this.toolBar.SuspendLayout();
@@ -80,13 +84,13 @@
             this.textBoxSimple.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBoxSimple.Dock = System.Windows.Forms.DockStyle.Fill;
             this.textBoxSimple.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ( (byte)( 0 ) ));
-            this.textBoxSimple.Location = new System.Drawing.Point(0, 25);
+            this.textBoxSimple.Location = new System.Drawing.Point(0, 50);
             this.textBoxSimple.Margin = new System.Windows.Forms.Padding(10);
             this.textBoxSimple.MaxLength = 2147483647;
             this.textBoxSimple.Multiline = true;
             this.textBoxSimple.Name = "textBoxSimple";
             this.textBoxSimple.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.textBoxSimple.Size = new System.Drawing.Size(808, 455);
+            this.textBoxSimple.Size = new System.Drawing.Size(808, 430);
             this.textBoxSimple.TabIndex = 2;
             // 
             // textBoxRich
@@ -94,9 +98,9 @@
             this.textBoxRich.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBoxRich.Dock = System.Windows.Forms.DockStyle.Fill;
             this.textBoxRich.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ( (byte)( 0 ) ));
-            this.textBoxRich.Location = new System.Drawing.Point(0, 25);
+            this.textBoxRich.Location = new System.Drawing.Point(0, 50);
             this.textBoxRich.Name = "textBoxRich";
-            this.textBoxRich.Size = new System.Drawing.Size(808, 455);
+            this.textBoxRich.Size = new System.Drawing.Size(808, 430);
             this.textBoxRich.TabIndex = 3;
             this.textBoxRich.Text = "";
             this.textBoxRich.Visible = false;
@@ -142,42 +146,46 @@
             // 
             this.toolBar.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
             this.toolBar.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripButton1,
-            this.toolStripButton2,
-            this.toolStripButton4});
+            this.toolBold,
+            this.toolItalic,
+            this.toolUnderline,
+            this.toolStrike,
+            this.toolStripSeparator4,
+            this.toolStripComboBox1,
+            this.toolStripComboBox2});
             this.toolBar.Location = new System.Drawing.Point(0, 25);
             this.toolBar.Name = "toolBar";
             this.toolBar.Size = new System.Drawing.Size(808, 25);
             this.toolBar.TabIndex = 5;
-            this.toolBar.Text = "toolStrip1";
-            this.toolBar.Visible = false;
+            this.toolBar.Text = "Formatting Tool Bar";
             // 
-            // toolStripButton1
+            // toolBold
             // 
-            this.toolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton1.Image = global::SimpleEdit.Properties.Resources.boldhs;
-            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton1.Name = "toolStripButton1";
-            this.toolStripButton1.Size = new System.Drawing.Size(23, 22);
-            this.toolStripButton1.Text = "toolStripButton1";
+            this.toolBold.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.toolBold.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.toolBold.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolBold.Name = "toolBold";
+            this.toolBold.Size = new System.Drawing.Size(23, 22);
+            this.toolBold.Text = "B";
+            this.toolBold.Click += new System.EventHandler(this.toolBold_Click);
             // 
-            // toolStripButton2
+            // toolItalic
             // 
-            this.toolStripButton2.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton2.Image = global::SimpleEdit.Properties.Resources.ItalicHS;
-            this.toolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton2.Name = "toolStripButton2";
-            this.toolStripButton2.Size = new System.Drawing.Size(23, 22);
-            this.toolStripButton2.Text = "toolStripButton2";
+            this.toolItalic.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.toolItalic.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Italic);
+            this.toolItalic.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolItalic.Name = "toolItalic";
+            this.toolItalic.Size = new System.Drawing.Size(23, 22);
+            this.toolItalic.Text = "I";
             // 
-            // toolStripButton4
+            // toolUnderline
             // 
-            this.toolStripButton4.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton4.Image = ( (System.Drawing.Image)( resources.GetObject("toolStripButton4.Image") ) );
-            this.toolStripButton4.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton4.Name = "toolStripButton4";
-            this.toolStripButton4.Size = new System.Drawing.Size(23, 22);
-            this.toolStripButton4.Text = "toolStripButton4";
+            this.toolUnderline.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.toolUnderline.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Underline);
+            this.toolUnderline.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolUnderline.Name = "toolUnderline";
+            this.toolUnderline.Size = new System.Drawing.Size(23, 22);
+            this.toolUnderline.Text = "U";
             // 
             // menuNew
             // 
@@ -195,16 +203,18 @@
             // menuNewText
             // 
             this.menuNewText.Name = "menuNewText";
-            this.menuNewText.Size = new System.Drawing.Size(143, 22);
+            this.menuNewText.Size = new System.Drawing.Size(152, 22);
             this.menuNewText.Text = "&Text File";
             this.menuNewText.ToolTipText = "A text document with no text formatting. Like a .txt file.";
+            this.menuNewText.Click += new System.EventHandler(this.menuNewText_Click);
             // 
             // menuNewRich
             // 
             this.menuNewRich.Name = "menuNewRich";
-            this.menuNewRich.Size = new System.Drawing.Size(143, 22);
+            this.menuNewRich.Size = new System.Drawing.Size(152, 22);
             this.menuNewRich.Text = "&Rich Text File";
             this.menuNewRich.ToolTipText = "A rich text file with formatting. Like a word document.";
+            this.menuNewRich.Click += new System.EventHandler(this.menuNewRich_Click);
             // 
             // menuOpen
             // 
@@ -339,14 +349,55 @@
             this.labelStatus.Size = new System.Drawing.Size(39, 17);
             this.labelStatus.Text = "Status";
             // 
+            // toolStrike
+            // 
+            this.toolStrike.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.toolStrike.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Strikeout);
+            this.toolStrike.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStrike.Name = "toolStrike";
+            this.toolStrike.Size = new System.Drawing.Size(23, 22);
+            this.toolStrike.Text = "S";
+            // 
+            // toolStripSeparator4
+            // 
+            this.toolStripSeparator4.Name = "toolStripSeparator4";
+            this.toolStripSeparator4.Size = new System.Drawing.Size(6, 25);
+            // 
+            // toolStripComboBox1
+            // 
+            this.toolStripComboBox1.Name = "toolStripComboBox1";
+            this.toolStripComboBox1.Size = new System.Drawing.Size(121, 25);
+            // 
+            // toolStripComboBox2
+            // 
+            this.toolStripComboBox2.AutoSize = false;
+            this.toolStripComboBox2.DropDownWidth = 50;
+            this.toolStripComboBox2.Items.AddRange(new object[] {
+            "64",
+            "32",
+            "24",
+            "22",
+            "20",
+            "18",
+            "16",
+            "12",
+            "9",
+            "8",
+            "6",
+            "4",
+            "3",
+            "2"});
+            this.toolStripComboBox2.Name = "toolStripComboBox2";
+            this.toolStripComboBox2.Size = new System.Drawing.Size(50, 25);
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(808, 502);
-            this.Controls.Add(this.toolBar);
-            this.Controls.Add(this.textBoxSimple);
             this.Controls.Add(this.textBoxRich);
+            this.Controls.Add(this.textBoxSimple);
+            this.Controls.Add(this.toolBar);
             this.Controls.Add(this.statusStrip);
             this.Controls.Add(this.menuStrip);
             this.Icon = ( (System.Drawing.Icon)( resources.GetObject("$this.Icon") ) );
@@ -391,10 +442,14 @@
         private System.Windows.Forms.ToolStripMenuItem menuEditSelectAll;
         private System.Windows.Forms.ToolStripMenuItem menuEditExtras;
         private System.Windows.Forms.ToolStrip toolBar;
-        private System.Windows.Forms.ToolStripButton toolStripButton1;
-        private System.Windows.Forms.ToolStripButton toolStripButton2;
-        private System.Windows.Forms.ToolStripButton toolStripButton4;
+        private System.Windows.Forms.ToolStripButton toolBold;
+        private System.Windows.Forms.ToolStripButton toolItalic;
+        private System.Windows.Forms.ToolStripButton toolUnderline;
         private System.Windows.Forms.ToolStripStatusLabel labelStatus;
+        private System.Windows.Forms.ToolStripButton toolStrike;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
+        private System.Windows.Forms.ToolStripComboBox toolStripComboBox1;
+        private System.Windows.Forms.ToolStripComboBox toolStripComboBox2;
     }
 }
 

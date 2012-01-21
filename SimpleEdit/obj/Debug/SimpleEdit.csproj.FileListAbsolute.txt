@@ -9,3 +9,5 @@ F:\Projects (VS08)\SimpleEdit\SimpleEdit\obj\Debug\SimpleEdit.pdb
 F:\Projects (VS08)\SimpleEdit\SimpleEdit\bin\Debug\Xware.xRegistry.dll
 F:\Projects (VS08)\SimpleEdit\SimpleEdit\bin\Debug\Xware.xRegistry.pdb
 F:\Projects (VS08)\SimpleEdit\SimpleEdit\obj\Debug\SimpleEdit.PrintMenu.resources
+F:\Projects (VS08)\SimpleEdit\SimpleEdit\bin\Debug\SimpleEditPluginInterface.dll
+F:\Projects (VS08)\SimpleEdit\SimpleEdit\bin\Debug\SimpleEditPluginInterface.pdb

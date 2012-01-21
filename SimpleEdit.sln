@@ -3,6 +3,10 @@ Microsoft Visual Studio Solution File, Format Version 10.00
 # Visual Studio 2008
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleEdit", "SimpleEdit\SimpleEdit.csproj", "{50B3A36B-34CE-41B7-A3E0-CA079C06781E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleEditPluginInterface", "SimpleEditPluginInterface\SimpleEditPluginInterface.csproj", "{5F13E0ED-4379-4055-A0C4-7019CDF5645E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleEditFileHandler", "SimpleEditFileHandler\SimpleEditFileHandler.csproj", "{292780C7-5CC2-42FD-8506-DB639B18A8F1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -13,6 +17,14 @@ Global
 		{50B3A36B-34CE-41B7-A3E0-CA079C06781E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{50B3A36B-34CE-41B7-A3E0-CA079C06781E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{50B3A36B-34CE-41B7-A3E0-CA079C06781E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5F13E0ED-4379-4055-A0C4-7019CDF5645E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5F13E0ED-4379-4055-A0C4-7019CDF5645E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5F13E0ED-4379-4055-A0C4-7019CDF5645E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5F13E0ED-4379-4055-A0C4-7019CDF5645E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{292780C7-5CC2-42FD-8506-DB639B18A8F1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{292780C7-5CC2-42FD-8506-DB639B18A8F1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{292780C7-5CC2-42FD-8506-DB639B18A8F1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{292780C7-5CC2-42FD-8506-DB639B18A8F1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
