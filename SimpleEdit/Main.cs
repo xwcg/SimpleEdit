@@ -237,7 +237,7 @@ namespace SimpleEdit
                 toolItalic.Checked = false;
                 toolUnderline.Checked = false;
                 toolStrike.Checked = false;
-                toolFontList.Text = "";                ;
+                toolFontList.Text = ""; 
                 toolFontSize.Text = "";
             }
         }
@@ -262,6 +262,70 @@ namespace SimpleEdit
             }
             catch
             {
+            }
+        }
+           
+        private void menuEditConvertText_Click( object sender, EventArgs e )
+        {
+            string contents = textBoxRich.Text;
+
+            NewDocument(false);
+            textBoxSimple.Text = contents;
+        }
+
+        private void menuEditConvertRich_Click( object sender, EventArgs e )
+        {
+            string contents = textBoxSimple.Text;
+
+            NewDocument(true);
+            textBoxRich.Text = contents;
+        }
+
+        private void menuEditSelectAll_Click( object sender, EventArgs e )
+        {
+            if ( richDocument )
+            {
+                textBoxRich.SelectAll();
+            }
+            else
+            {
+                textBoxSimple.SelectAll();
+            }
+        }
+
+        private void menuEditCut_Click( object sender, EventArgs e )
+        {
+            if ( richDocument )
+            {
+                textBoxRich.Cut();
+            }
+            else
+            {
+                textBoxSimple.Cut();
+            }
+        }
+
+        private void menuEditCopy_Click( object sender, EventArgs e )
+        {
+            if ( richDocument )
+            {
+                textBoxRich.Copy();
+            }
+            else
+            {
+                textBoxSimple.Copy();
+            }
+        }
+
+        private void menuEditPaste_Click( object sender, EventArgs e )
+        {
+            if ( richDocument )
+            {
+                textBoxRich.Paste();
+            }
+            else
+            {
+                textBoxSimple.Paste();
             }
         }
 

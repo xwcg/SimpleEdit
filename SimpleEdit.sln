@@ -13,11 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SX-Uppercase", "SX-Uppercas
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SX-Lowercase", "SX-Lowercase\SX-Lowercase.csproj", "{0E815B77-7F7F-4DB3-A6C5-DF2321934F6B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestProject1", "TestProject1\TestProject1.csproj", "{40D1E2C2-5C51-43BC-AAC4-49B038FFD125}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{6B812E9C-8CD9-4DC1-9BE7-6599B4807204}"
 	ProjectSection(SolutionItems) = preProject
-		LocalTestRun.testrunconfig = LocalTestRun.testrunconfig
 		SimpleEdit.vsmdi = SimpleEdit.vsmdi
 	EndProjectSection
 EndProject
@@ -54,10 +51,6 @@ Global
 		{0E815B77-7F7F-4DB3-A6C5-DF2321934F6B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0E815B77-7F7F-4DB3-A6C5-DF2321934F6B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0E815B77-7F7F-4DB3-A6C5-DF2321934F6B}.Release|Any CPU.Build.0 = Release|Any CPU
-		{40D1E2C2-5C51-43BC-AAC4-49B038FFD125}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{40D1E2C2-5C51-43BC-AAC4-49B038FFD125}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{40D1E2C2-5C51-43BC-AAC4-49B038FFD125}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{40D1E2C2-5C51-43BC-AAC4-49B038FFD125}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
