@@ -30,23 +30,23 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PrintMenu));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.button3 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
+            this.numCopies = new System.Windows.Forms.NumericUpDown();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.comboPrinters = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.radioButton4 = new System.Windows.Forms.RadioButton();
-            this.radioButton3 = new System.Windows.Forms.RadioButton();
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
+            this.radioColorRGB = new System.Windows.Forms.RadioButton();
+            this.radioColorBW = new System.Windows.Forms.RadioButton();
+            this.radioRadioOrientationLandscape = new System.Windows.Forms.RadioButton();
+            this.radioOrientationPortrait = new System.Windows.Forms.RadioButton();
             this.panel2 = new System.Windows.Forms.Panel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
-            ( (System.ComponentModel.ISupportInitialize)( this.numericUpDown1 ) ).BeginInit();
+            ( (System.ComponentModel.ISupportInitialize)( this.numCopies ) ).BeginInit();
             this.panel2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -62,9 +62,22 @@
             this.panel1.Size = new System.Drawing.Size(367, 91);
             this.panel1.TabIndex = 0;
             // 
+            // button3
+            // 
+            this.button3.AutoSize = true;
+            this.button3.DialogResult = System.Windows.Forms.DialogResult.Retry;
+            this.button3.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ( (byte)( 0 ) ));
+            this.button3.Location = new System.Drawing.Point(135, 50);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(96, 25);
+            this.button3.TabIndex = 0;
+            this.button3.Text = "Preview";
+            this.button3.UseVisualStyleBackColor = true;
+            // 
             // button1
             // 
             this.button1.AutoSize = true;
+            this.button1.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.button1.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ( (byte)( 0 ) ));
             this.button1.Location = new System.Drawing.Point(146, 14);
             this.button1.Name = "button1";
@@ -84,26 +97,26 @@
             this.label1.TabIndex = 1;
             this.label1.Text = "How many copies?";
             // 
-            // numericUpDown1
+            // numCopies
             // 
-            this.numericUpDown1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.numericUpDown1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ( (byte)( 0 ) ));
-            this.numericUpDown1.Location = new System.Drawing.Point(45, 58);
-            this.numericUpDown1.Maximum = new decimal(new int[] {
+            this.numCopies.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.numCopies.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ( (byte)( 0 ) ));
+            this.numCopies.Location = new System.Drawing.Point(45, 58);
+            this.numCopies.Maximum = new decimal(new int[] {
             2000,
             0,
             0,
             0});
-            this.numericUpDown1.Minimum = new decimal(new int[] {
+            this.numCopies.Minimum = new decimal(new int[] {
             1,
             0,
             0,
             0});
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(93, 25);
-            this.numericUpDown1.TabIndex = 2;
-            this.numericUpDown1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.numericUpDown1.Value = new decimal(new int[] {
+            this.numCopies.Name = "numCopies";
+            this.numCopies.Size = new System.Drawing.Size(93, 25);
+            this.numCopies.TabIndex = 2;
+            this.numCopies.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.numCopies.Value = new decimal(new int[] {
             1,
             0,
             0,
@@ -154,58 +167,58 @@
             this.label4.TabIndex = 1;
             this.label4.Text = "Colour?";
             // 
-            // radioButton4
+            // radioColorRGB
             // 
-            this.radioButton4.Appearance = System.Windows.Forms.Appearance.Button;
-            this.radioButton4.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ( (byte)( 0 ) ));
-            this.radioButton4.Image = global::SimpleEdit.Properties.Resources.color;
-            this.radioButton4.Location = new System.Drawing.Point(116, 3);
-            this.radioButton4.Name = "radioButton4";
-            this.radioButton4.Size = new System.Drawing.Size(65, 65);
-            this.radioButton4.TabIndex = 3;
-            this.radioButton4.UseVisualStyleBackColor = true;
+            this.radioColorRGB.Appearance = System.Windows.Forms.Appearance.Button;
+            this.radioColorRGB.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ( (byte)( 0 ) ));
+            this.radioColorRGB.Image = global::SimpleEdit.Properties.Resources.color;
+            this.radioColorRGB.Location = new System.Drawing.Point(116, 3);
+            this.radioColorRGB.Name = "radioColorRGB";
+            this.radioColorRGB.Size = new System.Drawing.Size(65, 65);
+            this.radioColorRGB.TabIndex = 3;
+            this.radioColorRGB.UseVisualStyleBackColor = true;
             // 
-            // radioButton3
+            // radioColorBW
             // 
-            this.radioButton3.Appearance = System.Windows.Forms.Appearance.Button;
-            this.radioButton3.Checked = true;
-            this.radioButton3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ( (byte)( 0 ) ));
-            this.radioButton3.Image = global::SimpleEdit.Properties.Resources.bnw;
-            this.radioButton3.Location = new System.Drawing.Point(45, 3);
-            this.radioButton3.Name = "radioButton3";
-            this.radioButton3.Size = new System.Drawing.Size(65, 65);
-            this.radioButton3.TabIndex = 3;
-            this.radioButton3.TabStop = true;
-            this.radioButton3.UseVisualStyleBackColor = true;
+            this.radioColorBW.Appearance = System.Windows.Forms.Appearance.Button;
+            this.radioColorBW.Checked = true;
+            this.radioColorBW.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ( (byte)( 0 ) ));
+            this.radioColorBW.Image = global::SimpleEdit.Properties.Resources.bnw;
+            this.radioColorBW.Location = new System.Drawing.Point(45, 3);
+            this.radioColorBW.Name = "radioColorBW";
+            this.radioColorBW.Size = new System.Drawing.Size(65, 65);
+            this.radioColorBW.TabIndex = 3;
+            this.radioColorBW.TabStop = true;
+            this.radioColorBW.UseVisualStyleBackColor = true;
             // 
-            // radioButton2
+            // radioRadioOrientationLandscape
             // 
-            this.radioButton2.Appearance = System.Windows.Forms.Appearance.Button;
-            this.radioButton2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ( (byte)( 0 ) ));
-            this.radioButton2.Image = global::SimpleEdit.Properties.Resources.Generic_Document2;
-            this.radioButton2.Location = new System.Drawing.Point(116, 138);
-            this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(65, 65);
-            this.radioButton2.TabIndex = 3;
-            this.radioButton2.UseVisualStyleBackColor = true;
+            this.radioRadioOrientationLandscape.Appearance = System.Windows.Forms.Appearance.Button;
+            this.radioRadioOrientationLandscape.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ( (byte)( 0 ) ));
+            this.radioRadioOrientationLandscape.Image = global::SimpleEdit.Properties.Resources.Generic_Document2;
+            this.radioRadioOrientationLandscape.Location = new System.Drawing.Point(116, 138);
+            this.radioRadioOrientationLandscape.Name = "radioRadioOrientationLandscape";
+            this.radioRadioOrientationLandscape.Size = new System.Drawing.Size(65, 65);
+            this.radioRadioOrientationLandscape.TabIndex = 3;
+            this.radioRadioOrientationLandscape.UseVisualStyleBackColor = true;
             // 
-            // radioButton1
+            // radioOrientationPortrait
             // 
-            this.radioButton1.Appearance = System.Windows.Forms.Appearance.Button;
-            this.radioButton1.Checked = true;
-            this.radioButton1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ( (byte)( 0 ) ));
-            this.radioButton1.Image = global::SimpleEdit.Properties.Resources.Generic_Document;
-            this.radioButton1.Location = new System.Drawing.Point(45, 138);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(65, 65);
-            this.radioButton1.TabIndex = 3;
-            this.radioButton1.TabStop = true;
-            this.radioButton1.UseVisualStyleBackColor = true;
+            this.radioOrientationPortrait.Appearance = System.Windows.Forms.Appearance.Button;
+            this.radioOrientationPortrait.Checked = true;
+            this.radioOrientationPortrait.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ( (byte)( 0 ) ));
+            this.radioOrientationPortrait.Image = global::SimpleEdit.Properties.Resources.Generic_Document;
+            this.radioOrientationPortrait.Location = new System.Drawing.Point(45, 138);
+            this.radioOrientationPortrait.Name = "radioOrientationPortrait";
+            this.radioOrientationPortrait.Size = new System.Drawing.Size(65, 65);
+            this.radioOrientationPortrait.TabIndex = 3;
+            this.radioOrientationPortrait.TabStop = true;
+            this.radioOrientationPortrait.UseVisualStyleBackColor = true;
             // 
             // panel2
             // 
-            this.panel2.Controls.Add(this.radioButton3);
-            this.panel2.Controls.Add(this.radioButton4);
+            this.panel2.Controls.Add(this.radioColorBW);
+            this.panel2.Controls.Add(this.radioColorRGB);
             this.panel2.Location = new System.Drawing.Point(0, 242);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(367, 78);
@@ -232,17 +245,6 @@
             this.button2.Text = "I know what I am doing. Show me the real magic.";
             this.button2.UseVisualStyleBackColor = true;
             // 
-            // button3
-            // 
-            this.button3.AutoSize = true;
-            this.button3.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ( (byte)( 0 ) ));
-            this.button3.Location = new System.Drawing.Point(135, 50);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(96, 25);
-            this.button3.TabIndex = 0;
-            this.button3.Text = "Preview";
-            this.button3.UseVisualStyleBackColor = true;
-            // 
             // PrintMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -253,9 +255,9 @@
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.comboPrinters);
-            this.Controls.Add(this.radioButton2);
-            this.Controls.Add(this.radioButton1);
-            this.Controls.Add(this.numericUpDown1);
+            this.Controls.Add(this.radioRadioOrientationLandscape);
+            this.Controls.Add(this.radioOrientationPortrait);
+            this.Controls.Add(this.numCopies);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
@@ -270,7 +272,7 @@
             this.Text = "Print Document";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ( (System.ComponentModel.ISupportInitialize)( this.numericUpDown1 ) ).EndInit();
+            ( (System.ComponentModel.ISupportInitialize)( this.numCopies ) ).EndInit();
             this.panel2.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -282,16 +284,16 @@
 
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.NumericUpDown numericUpDown1;
+        private System.Windows.Forms.NumericUpDown numCopies;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.RadioButton radioButton1;
-        private System.Windows.Forms.RadioButton radioButton2;
+        private System.Windows.Forms.RadioButton radioOrientationPortrait;
+        private System.Windows.Forms.RadioButton radioRadioOrientationLandscape;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ComboBox comboPrinters;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.RadioButton radioButton3;
-        private System.Windows.Forms.RadioButton radioButton4;
+        private System.Windows.Forms.RadioButton radioColorBW;
+        private System.Windows.Forms.RadioButton radioColorRGB;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button button2;

@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using SimpleEditExtraHandler;
 using SimpleEditPluginInterface;
 using Xware.xRegistry;
+using System.IO;
 
 namespace SimpleEdit
 {
@@ -22,6 +23,8 @@ namespace SimpleEdit
         string AppName = "SimpleEdit - " + Assembly.GetCallingAssembly().GetName().Version.ToString();
 
         private int pageMargin = 600;
+
+        FileInfo loadedFile;
 
         public Main()
         {
@@ -47,20 +50,103 @@ namespace SimpleEdit
             textBoxRich.Rtf = "";
             textBoxRich.Text = "";
 
+            this.Text = "Untitled - " + AppName;
+
             if ( rich )
             {
-                this.Text = "Untitled Rich Document - " + AppName;
                 textBoxRich.Visible = true;
                 textBoxSimple.Visible = false;
                 toolBar.Visible = true;
             }
             else
             {
-                this.Text = "Untitled Text Document - " + AppName;
                 textBoxRich.Visible = false;
                 textBoxSimple.Visible = true;
                 toolBar.Visible = false;
             }
+        }
+
+        private void OpenFile( string path )
+        {
+            loadedFile = new FileInfo(path);
+
+            if ( !loadedFile.Exists )
+            {
+                loadedFile = null;
+                return;
+            }
+
+            foreach ( AvailablePlugin p in Global.Plugins.AvailablePlugins )
+            {
+                if ( p.Instance is SimpleEditFileHandler.SEFileHandler )
+                {
+                    string[] ext = ( (SimpleEditFileHandler.SEFileHandler)p.Instance ).fileExtensions;
+
+                    foreach ( string e in ext )
+                    {
+                        if ( e == loadedFile.Extension )
+                        {
+                            OpenFileHandler((SimpleEditFileHandler.SEFileHandler)p.Instance);
+                            return;
+                        }
+                    }
+                }
+            }
+
+            OpenFileHandler(null, true);
+        }
+
+        private void OpenFileHandler( SimpleEditFileHandler.SEFileHandler p )
+        {
+            OpenFileHandler(p, false);
+        }
+
+        private void OpenFileHandler( SimpleEditFileHandler.SEFileHandler p, bool loadAsTxt )
+        {
+            if ( loadAsTxt )
+            {
+                StreamReader r = new StreamReader(loadedFile.FullName);
+
+                textBoxRich.Visible = false;
+                textBoxSimple.Visible = true;
+                toolBar.Visible = false;
+
+                textBoxSimple.Text = r.ReadToEnd();
+
+                r.Close();
+                r.Dispose();
+            }
+            else
+            {
+                if ( p == null )
+                {
+                    throw new Exception("Plugin error");
+                }
+
+                if ( p.Load(loadedFile.FullName) )
+                {
+                    if ( p.isRtf )
+                    {
+                        textBoxRich.Visible = true;
+                        textBoxSimple.Visible = false;
+                        toolBar.Visible = true;
+
+                        textBoxRich.Rtf = p.Content;
+                    }
+                    else
+                    {
+                        textBoxRich.Visible = false;
+                        textBoxSimple.Visible = true;
+                        toolBar.Visible = false;
+
+                        textBoxSimple.Text = p.Content;
+                    }
+                }
+
+                p.Dispose();
+            }
+
+            this.Text = loadedFile.Name + " - " + AppName;
         }
 
         private void LoadPlugins()
@@ -74,6 +160,8 @@ namespace SimpleEdit
                     AddExtra((SimpleEditExtraHandler.SEExtra)p.Instance);
                 }
             }
+
+            Global.Plugins.FindPlugins(Environment.CurrentDirectory + "\\plugins\\files\\");
         }
 
         private void AddExtra( SimpleEditExtraHandler.SEExtra p )
@@ -140,8 +228,18 @@ namespace SimpleEdit
         {
             if ( path.Trim() != "" )
             {
-                menuOpen.DropDownItems.Add(path);
+                ToolStripMenuItem m = new ToolStripMenuItem();
+                m.Text = path;
+                m.Click += new EventHandler(m_Click);
+
+                menuOpen.DropDownItems.Add(m);
             }
+        }
+
+        void m_Click( object sender, EventArgs e )
+        {
+            ToolStripMenuItem m = (ToolStripMenuItem)sender;
+            OpenFile(m.Text);
         }
 
         // Button declarations
@@ -172,7 +270,7 @@ namespace SimpleEdit
         private void menuPrint_Click( object sender, EventArgs e )
         {
             PrintMenu p = new PrintMenu();
-            p.Show();
+            p.ShowDialog();
         }
 
         private void menuOptionsWordWrap_Click( object sender, EventArgs e )
@@ -206,89 +304,20 @@ namespace SimpleEdit
             NewDocument(true);
         }
 
-        private void toolBold_Click( object sender, EventArgs e )
-        {
-            textBoxRich.SelectionFont = new Font(textBoxRich.SelectionFont, textBoxRich.SelectionFont.Style ^ FontStyle.Bold);
-        }
 
-        private void toolItalic_Click( object sender, EventArgs e )
+        private void menuOpen_ButtonClick( object sender, EventArgs e )
         {
-            textBoxRich.SelectionFont = new Font(textBoxRich.SelectionFont, textBoxRich.SelectionFont.Style ^ FontStyle.Italic);
-        }
+            OpenFileDialog ofd = new OpenFileDialog();
+            ofd.Multiselect = false;
 
-        private void toolUnderline_Click( object sender, EventArgs e )
-        {
-            textBoxRich.SelectionFont = new Font(textBoxRich.SelectionFont, textBoxRich.SelectionFont.Style ^ FontStyle.Underline);
-        }
-
-        private void toolStrike_Click( object sender, EventArgs e )
-        {
-            textBoxRich.SelectionFont = new Font(textBoxRich.SelectionFont, textBoxRich.SelectionFont.Style ^ FontStyle.Strikeout);
-        }
-
-        private void toolAlignLeft_Click( object sender, EventArgs e )
-        {
-            textBoxRich.SelectionAlignment = HorizontalAlignment.Left;
-        }
-
-        private void toolAlignCenter_Click( object sender, EventArgs e )
-        {
-            textBoxRich.SelectionAlignment = HorizontalAlignment.Center;
-        }
-
-        private void toolAlignRight_Click( object sender, EventArgs e )
-        {
-            textBoxRich.SelectionAlignment = HorizontalAlignment.Right;
-        }
-
-        private void textBoxRich_SelectionChanged( object sender, EventArgs e )
-        {
-            try
+            if ( ofd.ShowDialog() == DialogResult.OK )
             {
-                toolBold.Checked = textBoxRich.SelectionFont.Bold;
-                toolItalic.Checked = textBoxRich.SelectionFont.Italic;
-                toolUnderline.Checked = textBoxRich.SelectionFont.Underline;
-                toolStrike.Checked = textBoxRich.SelectionFont.Strikeout;
-                toolFontList.SelectedIndex = toolFontList.Items.IndexOf(textBoxRich.SelectionFont.Name);
-                toolFontSize.Text = textBoxRich.SelectionFont.SizeInPoints.ToString();
-                toolAlignLeft.Checked = ( textBoxRich.SelectionAlignment == HorizontalAlignment.Left );
-                toolAlignCenter.Checked = ( textBoxRich.SelectionAlignment == HorizontalAlignment.Center );
-                toolAlignRight.Checked = ( textBoxRich.SelectionAlignment == HorizontalAlignment.Right );
-            }
-            catch
-            {
-                toolBold.Checked = false;
-                toolItalic.Checked = false;
-                toolUnderline.Checked = false;
-                toolStrike.Checked = false;
-                toolFontList.Text = ""; 
-                toolFontSize.Text = "";
+                OpenFile(ofd.FileName);
             }
         }
 
-        private void toolFontList_SelectedIndexChanged( object sender, EventArgs e )
-        {
-            try
-            {
-                textBoxRich.SelectionFont = new Font(toolFontList.Text, textBoxRich.SelectionFont.Size, textBoxRich.SelectionFont.Style, textBoxRich.SelectionFont.Unit);
-            }
-            catch
-            {
-            }
-        }
+        #region EditMenu
 
-        private void toolFontSize_SelectedIndexChanged( object sender, EventArgs e )
-        {
-            try
-            {
-                float f = Convert.ToSingle(toolFontSize.Text);
-                textBoxRich.SelectionFont = new Font(textBoxRich.SelectionFont.Name, f, textBoxRich.SelectionFont.Style, GraphicsUnit.Point);
-            }
-            catch
-            {
-            }
-        }
-           
         private void menuEditConvertText_Click( object sender, EventArgs e )
         {
             string contents = textBoxRich.Text;
@@ -365,6 +394,94 @@ namespace SimpleEdit
             }
         }
 
+        #endregion
+
+        #region ToolBarItems
+
+        private void toolBold_Click( object sender, EventArgs e )
+        {
+            textBoxRich.SelectionFont = new Font(textBoxRich.SelectionFont, textBoxRich.SelectionFont.Style ^ FontStyle.Bold);
+        }
+
+        private void toolItalic_Click( object sender, EventArgs e )
+        {
+            textBoxRich.SelectionFont = new Font(textBoxRich.SelectionFont, textBoxRich.SelectionFont.Style ^ FontStyle.Italic);
+        }
+
+        private void toolUnderline_Click( object sender, EventArgs e )
+        {
+            textBoxRich.SelectionFont = new Font(textBoxRich.SelectionFont, textBoxRich.SelectionFont.Style ^ FontStyle.Underline);
+        }
+
+        private void toolStrike_Click( object sender, EventArgs e )
+        {
+            textBoxRich.SelectionFont = new Font(textBoxRich.SelectionFont, textBoxRich.SelectionFont.Style ^ FontStyle.Strikeout);
+        }
+
+        private void toolAlignLeft_Click( object sender, EventArgs e )
+        {
+            textBoxRich.SelectionAlignment = HorizontalAlignment.Left;
+        }
+
+        private void toolAlignCenter_Click( object sender, EventArgs e )
+        {
+            textBoxRich.SelectionAlignment = HorizontalAlignment.Center;
+        }
+
+        private void toolAlignRight_Click( object sender, EventArgs e )
+        {
+            textBoxRich.SelectionAlignment = HorizontalAlignment.Right;
+        }
+
+        private void textBoxRich_SelectionChanged( object sender, EventArgs e )
+        {
+            try
+            {
+                toolBold.Checked = textBoxRich.SelectionFont.Bold;
+                toolItalic.Checked = textBoxRich.SelectionFont.Italic;
+                toolUnderline.Checked = textBoxRich.SelectionFont.Underline;
+                toolStrike.Checked = textBoxRich.SelectionFont.Strikeout;
+                toolFontList.SelectedIndex = toolFontList.Items.IndexOf(textBoxRich.SelectionFont.Name);
+                toolFontSize.Text = textBoxRich.SelectionFont.SizeInPoints.ToString();
+                toolAlignLeft.Checked = ( textBoxRich.SelectionAlignment == HorizontalAlignment.Left );
+                toolAlignCenter.Checked = ( textBoxRich.SelectionAlignment == HorizontalAlignment.Center );
+                toolAlignRight.Checked = ( textBoxRich.SelectionAlignment == HorizontalAlignment.Right );
+            }
+            catch
+            {
+                toolBold.Checked = false;
+                toolItalic.Checked = false;
+                toolUnderline.Checked = false;
+                toolStrike.Checked = false;
+                toolFontList.Text = "";
+                toolFontSize.Text = "";
+            }
+        }
+
+        private void toolFontList_SelectedIndexChanged( object sender, EventArgs e )
+        {
+            try
+            {
+                textBoxRich.SelectionFont = new Font(toolFontList.Text, textBoxRich.SelectionFont.Size, textBoxRich.SelectionFont.Style, textBoxRich.SelectionFont.Unit);
+            }
+            catch
+            {
+            }
+        }
+
+        private void toolFontSize_SelectedIndexChanged( object sender, EventArgs e )
+        {
+            try
+            {
+                float f = Convert.ToSingle(toolFontSize.Text);
+                textBoxRich.SelectionFont = new Font(textBoxRich.SelectionFont.Name, f, textBoxRich.SelectionFont.Style, GraphicsUnit.Point);
+            }
+            catch
+            {
+            }
+        }
+
+        #endregion
 
     }
 }

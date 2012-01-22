@@ -178,6 +178,7 @@
             this.menuOpen.Size = new System.Drawing.Size(52, 22);
             this.menuOpen.Text = "&Open";
             this.menuOpen.ToolTipText = "Open an existing file";
+            this.menuOpen.ButtonClick += new System.EventHandler(this.menuOpen_ButtonClick);
             // 
             // menuPrint
             // 
@@ -190,6 +191,7 @@
             this.menuPrint.Size = new System.Drawing.Size(48, 22);
             this.menuPrint.Text = "&Print";
             this.menuPrint.ToolTipText = "Print the whole document";
+            this.menuPrint.Click += new System.EventHandler(this.menuPrint_Click);
             // 
             // menuPrintSelection
             // 
