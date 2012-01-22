@@ -21,6 +21,8 @@ namespace SimpleEdit
 
         string AppName = "SimpleEdit - " + Assembly.GetCallingAssembly().GetName().Version.ToString();
 
+        private int pageMargin = 600;
+
         public Main()
         {
             InitializeComponent();
@@ -117,12 +119,14 @@ namespace SimpleEdit
             {
                 menuOptionsWordWrap.Checked = true;
                 textBoxRich.WordWrap = true;
+                textBoxRich.RightMargin = pageMargin;
                 textBoxSimple.WordWrap = true;
             }
             else
             {
                 menuOptionsWordWrap.Checked = false;
                 textBoxRich.WordWrap = false;
+                textBoxRich.RightMargin = 0;
                 textBoxSimple.WordWrap = false;
             }
 
@@ -177,6 +181,7 @@ namespace SimpleEdit
             {
                 menuOptionsWordWrap.Checked = false;
                 textBoxRich.WordWrap = false;
+                textBoxRich.RightMargin = 0;
                 textBoxSimple.WordWrap = false;
                 controllerRegistry.SetValue("WordWrap", false);
             }
@@ -184,6 +189,7 @@ namespace SimpleEdit
             {
                 menuOptionsWordWrap.Checked = true;
                 textBoxRich.WordWrap = true;
+                textBoxRich.RightMargin = pageMargin;
                 textBoxSimple.WordWrap = true;
                 controllerRegistry.SetValue("WordWrap", true);
             }
@@ -220,6 +226,21 @@ namespace SimpleEdit
             textBoxRich.SelectionFont = new Font(textBoxRich.SelectionFont, textBoxRich.SelectionFont.Style ^ FontStyle.Strikeout);
         }
 
+        private void toolAlignLeft_Click( object sender, EventArgs e )
+        {
+            textBoxRich.SelectionAlignment = HorizontalAlignment.Left;
+        }
+
+        private void toolAlignCenter_Click( object sender, EventArgs e )
+        {
+            textBoxRich.SelectionAlignment = HorizontalAlignment.Center;
+        }
+
+        private void toolAlignRight_Click( object sender, EventArgs e )
+        {
+            textBoxRich.SelectionAlignment = HorizontalAlignment.Right;
+        }
+
         private void textBoxRich_SelectionChanged( object sender, EventArgs e )
         {
             try
@@ -230,6 +251,9 @@ namespace SimpleEdit
                 toolStrike.Checked = textBoxRich.SelectionFont.Strikeout;
                 toolFontList.SelectedIndex = toolFontList.Items.IndexOf(textBoxRich.SelectionFont.Name);
                 toolFontSize.Text = textBoxRich.SelectionFont.SizeInPoints.ToString();
+                toolAlignLeft.Checked = ( textBoxRich.SelectionAlignment == HorizontalAlignment.Left );
+                toolAlignCenter.Checked = ( textBoxRich.SelectionAlignment == HorizontalAlignment.Center );
+                toolAlignRight.Checked = ( textBoxRich.SelectionAlignment == HorizontalAlignment.Right );
             }
             catch
             {
@@ -326,6 +350,18 @@ namespace SimpleEdit
             else
             {
                 textBoxSimple.Paste();
+            }
+        }
+
+        private void menuEditUndo_Click( object sender, EventArgs e )
+        {
+            if ( richDocument )
+            {
+                textBoxRich.Undo();
+            }
+            else
+            {
+                textBoxSimple.Undo();
             }
         }
 

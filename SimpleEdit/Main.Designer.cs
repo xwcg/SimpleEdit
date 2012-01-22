@@ -60,9 +60,9 @@
             this.toolUnderline = new System.Windows.Forms.ToolStripButton();
             this.toolStrike = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
+            this.toolAlignLeft = new System.Windows.Forms.ToolStripButton();
+            this.toolAlignCenter = new System.Windows.Forms.ToolStripButton();
+            this.toolAlignRight = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.toolFontList = new System.Windows.Forms.ToolStripComboBox();
             this.toolFontSize = new System.Windows.Forms.ToolStripComboBox();
@@ -112,7 +112,7 @@
             // 
             this.textBoxRich.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBoxRich.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBoxRich.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ( (byte)( 0 ) ));
+            this.textBoxRich.Font = new System.Drawing.Font("Calibri", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ( (byte)( 0 ) ));
             this.textBoxRich.Location = new System.Drawing.Point(0, 53);
             this.textBoxRich.Name = "textBoxRich";
             this.textBoxRich.Size = new System.Drawing.Size(808, 427);
@@ -271,6 +271,7 @@
             this.menuEditUndo.ShortcutKeys = ( (System.Windows.Forms.Keys)( ( System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Z ) ) );
             this.menuEditUndo.Size = new System.Drawing.Size(184, 22);
             this.menuEditUndo.Text = "&Undo";
+            this.menuEditUndo.Click += new System.EventHandler(this.menuEditUndo_Click);
             // 
             // toolStripSeparator2
             // 
@@ -329,9 +330,9 @@
             this.toolUnderline,
             this.toolStrike,
             this.toolStripSeparator6,
-            this.toolStripButton1,
-            this.toolStripButton2,
-            this.toolStripButton3,
+            this.toolAlignLeft,
+            this.toolAlignCenter,
+            this.toolAlignRight,
             this.toolStripSeparator4,
             this.toolFontList,
             this.toolFontSize,
@@ -400,32 +401,35 @@
             this.toolStripSeparator6.Name = "toolStripSeparator6";
             this.toolStripSeparator6.Size = new System.Drawing.Size(6, 28);
             // 
-            // toolStripButton1
+            // toolAlignLeft
             // 
-            this.toolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton1.Image = global::SimpleEdit.Properties.Resources.AlignTableCellMiddleLeftJustHS;
-            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton1.Name = "toolStripButton1";
-            this.toolStripButton1.Size = new System.Drawing.Size(23, 25);
-            this.toolStripButton1.Text = "toolStripButton1";
+            this.toolAlignLeft.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolAlignLeft.Image = global::SimpleEdit.Properties.Resources.AlignTableCellMiddleLeftJustHS;
+            this.toolAlignLeft.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolAlignLeft.Name = "toolAlignLeft";
+            this.toolAlignLeft.Size = new System.Drawing.Size(23, 25);
+            this.toolAlignLeft.Text = "toolStripButton1";
+            this.toolAlignLeft.Click += new System.EventHandler(this.toolAlignLeft_Click);
             // 
-            // toolStripButton2
+            // toolAlignCenter
             // 
-            this.toolStripButton2.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton2.Image = global::SimpleEdit.Properties.Resources.AlignTableCellMiddleCenterHS;
-            this.toolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton2.Name = "toolStripButton2";
-            this.toolStripButton2.Size = new System.Drawing.Size(23, 25);
-            this.toolStripButton2.Text = "toolStripButton2";
+            this.toolAlignCenter.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolAlignCenter.Image = global::SimpleEdit.Properties.Resources.AlignTableCellMiddleCenterHS;
+            this.toolAlignCenter.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolAlignCenter.Name = "toolAlignCenter";
+            this.toolAlignCenter.Size = new System.Drawing.Size(23, 25);
+            this.toolAlignCenter.Text = "toolStripButton2";
+            this.toolAlignCenter.Click += new System.EventHandler(this.toolAlignCenter_Click);
             // 
-            // toolStripButton3
+            // toolAlignRight
             // 
-            this.toolStripButton3.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton3.Image = global::SimpleEdit.Properties.Resources.AlignTableCellMiddleRightHS;
-            this.toolStripButton3.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton3.Name = "toolStripButton3";
-            this.toolStripButton3.Size = new System.Drawing.Size(23, 25);
-            this.toolStripButton3.Text = "toolStripButton3";
+            this.toolAlignRight.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolAlignRight.Image = global::SimpleEdit.Properties.Resources.AlignTableCellMiddleRightHS;
+            this.toolAlignRight.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolAlignRight.Name = "toolAlignRight";
+            this.toolAlignRight.Size = new System.Drawing.Size(23, 25);
+            this.toolAlignRight.Text = "toolStripButton3";
+            this.toolAlignRight.Click += new System.EventHandler(this.toolAlignRight_Click);
             // 
             // toolStripSeparator4
             // 
@@ -443,20 +447,22 @@
             this.toolFontSize.AutoSize = false;
             this.toolFontSize.DropDownWidth = 50;
             this.toolFontSize.Items.AddRange(new object[] {
-            "64",
-            "32",
-            "24",
-            "22",
-            "20",
-            "18",
-            "16",
-            "12",
-            "9",
             "8",
-            "6",
-            "4",
-            "3",
-            "2"});
+            "9",
+            "10",
+            "11",
+            "12",
+            "14",
+            "16",
+            "18",
+            "20",
+            "22",
+            "24",
+            "26",
+            "28",
+            "36",
+            "48",
+            "72"});
             this.toolFontSize.Name = "toolFontSize";
             this.toolFontSize.Size = new System.Drawing.Size(50, 23);
             this.toolFontSize.SelectedIndexChanged += new System.EventHandler(this.toolFontSize_SelectedIndexChanged);
@@ -556,9 +562,9 @@
         private System.Windows.Forms.ToolStripComboBox toolFontSize;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator6;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
-        private System.Windows.Forms.ToolStripButton toolStripButton1;
-        private System.Windows.Forms.ToolStripButton toolStripButton2;
-        private System.Windows.Forms.ToolStripButton toolStripButton3;
+        private System.Windows.Forms.ToolStripButton toolAlignLeft;
+        private System.Windows.Forms.ToolStripButton toolAlignCenter;
+        private System.Windows.Forms.ToolStripButton toolAlignRight;
         private System.Windows.Forms.ToolStripMenuItem menuEditConvert;
         private System.Windows.Forms.ToolStripMenuItem menuEditConvertRich;
         private System.Windows.Forms.ToolStripMenuItem menuEditConvertText;
